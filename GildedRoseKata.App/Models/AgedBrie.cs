@@ -22,7 +22,7 @@ namespace GildedRoseKata.App.Models
             return this;
         }
 
-        public void UpdateQuantity()
+        public void UpdateQuality()
         {
             Console.WriteLine("AgedBrie update quantity");
         }

@@ -15,15 +15,18 @@ namespace GildedRoseKata.App.Core
 
         public IItem CreateSubItemFromName(Item item)
         {
-            var createdItem = new Item();
-            _itemsType.ForEach(type =>
-            {
-                var temporaryItem = (IItem)Activator.CreateInstance(type, item.Name, item.SellIn, item.Quality);
-                var createdItem = temporaryItem.Build();
+            IItem createdItem = new NullItem();
 
-                
-                createdItem.UpdateQuantity();
-            });
+            for (var i = 0; i < _itemsType.Count; i++)
+            {
+                var temporaryItem = (IItem)Activator.CreateInstance(_itemsType[i], item.Name, item.SellIn, item.Quality);
+                createdItem = temporaryItem.Build();
+
+                if (createdItem.GetType() != typeof(NullItem))
+                {
+                    return createdItem;
+                }
+            }
 
             return createdItem;
         }

@@ -21,7 +21,7 @@ namespace GildedRoseKata.App.Models
             return this;
         }
 
-        public void UpdateQuantity()
+        public void UpdateQuality()
         {
             throw new System.NotImplementedException();
         }

@@ -7,7 +7,7 @@ namespace GildedRoseKata.App.Core
     {
         public readonly List<Item> Items;
         private readonly IItemFactory _itemFactory;
-        
+
         public GildedRose(List<Item> items, IItemFactory itemFactory)
         {
             Items = items;
@@ -19,12 +19,11 @@ namespace GildedRoseKata.App.Core
             Items.ForEach(item =>
             {
                 var specificItem = _itemFactory.CreateSubItemFromName(item);
+                //specificItem.UpdateQuality();
             });
 
             for (var i = 0; i < Items.Count; i++)
             {
-                
-
                 if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (Items[i].Quality > 0)

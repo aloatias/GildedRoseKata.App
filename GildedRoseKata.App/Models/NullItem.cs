@@ -9,7 +9,7 @@ namespace GildedRoseKata.App.Core
             throw new System.NotImplementedException();
         }
 
-        public void UpdateQuantity()
+        public void UpdateQuality()
         {
             throw new System.NotImplementedException();
         }

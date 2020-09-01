@@ -13,7 +13,7 @@ namespace GildedRoseKata.App.Models
 
         public IItem Build()
         {
-            if (Name == "Sulfuras")
+            if (!Name.Contains("Sulfuras"))
             {
                 return new NullItem();
             }
@@ -21,7 +21,7 @@ namespace GildedRoseKata.App.Models
             return this;
         }
 
-        public void UpdateQuantity()
+        public void UpdateQuality()
         {
             throw new System.NotImplementedException();
         }

@@ -8,6 +8,7 @@ namespace GildedRoseKata.App.Core
     {
         private readonly List<Type> _itemsType;
 
+        // TODO: Use DI to inject a singleton instance of the list types
         public ItemFactory()
         {
             _itemsType = new List<Type> { typeof(AgedBrie), typeof(BackstagePasses), typeof(Conjured), typeof(Sulfuras) };

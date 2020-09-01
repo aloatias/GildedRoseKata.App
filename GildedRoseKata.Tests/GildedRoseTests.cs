@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using GildedRoseKata.App.Models;
 using GildedRoseKata.App.Core;
 using System.Text;
+using System;
 
 namespace GildedRoseKata.Tests
 {
     public class GildedRoseTests : TestFactory
     {
+        private readonly IItemFactory _itemFactory;
+
+        public GildedRoseTests()
+        {
+            _itemFactory = CreateItemFactory();
+        }
+
         [Fact]
         public void Foo()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(Items);
+            List<Item> items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
+
+            var itemFactory = new ItemFactory();
+            GildedRose app = new GildedRose(items, itemFactory);
             app.UpdateQuality();
-            Assert.Equal("foo", Items[0].Name);
+            Assert.Equal("foo", items[0].Name);
         }
 
         [Fact]
@@ -23,7 +33,7 @@ namespace GildedRoseKata.Tests
             // Prepare
             string expectedResult = InitialCharacterizationResult;
 
-            IList<Item> Items = new List<Item>
+            List<Item> Items = new List<Item>
             {
                 new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 },
                 new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 },
@@ -39,7 +49,7 @@ namespace GildedRoseKata.Tests
 			// new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
 
             // Act
-            var gildedRoseCore = new GildedRose(Items);
+            var gildedRoseCore = new GildedRose(Items, _itemFactory);
             gildedRoseCore.UpdateQuality();
 
             var sb = new StringBuilder();

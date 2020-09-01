@@ -1,6 +1,29 @@
-﻿namespace GildedRoseKata.App.Models
+﻿using GildedRoseKata.App.Core;
+
+namespace GildedRoseKata.App.Models
 {
-    public class Conjured : Item
+    public class Conjured : Item, IItem
     {
+        public Conjured(string name, int sellin, int quality)
+        {
+            Name = name;
+            SellIn = sellin;
+            Quality = quality;
+        }
+
+        public IItem Build()
+        {
+            if (!Name.Contains("Conjured"))
+            {
+                return new NullItem();
+            }
+
+            return this;
+        }
+
+        public void UpdateQuantity()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -15,27 +15,25 @@ namespace GildedRoseKata.App.Models
         {
             if (Name != "Aged Brie")
             {
-                return new NullItem(Name, SellIn, Quality);
+                return new UnknownItem(Name, SellIn, Quality);
             }
 
             return this;
         }
 
-        public int UpdateQuality()
+        public void UpdateQuality()
         {
             if (Quality < 50)
             {
-                Quality++;
+                Quality += 1;
             }
 
-            SellIn--;
+            SellIn -= 1;
 
             if (SellIn < 0 && Quality < 50)
             {
-                Quality++;
+                Quality += 1;
             }
-
-            return Quality;
         }
     }
 }

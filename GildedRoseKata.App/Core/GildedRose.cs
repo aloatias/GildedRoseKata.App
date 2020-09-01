@@ -19,7 +19,10 @@ namespace GildedRoseKata.App.Core
             Items.ForEach(item =>
             {
                 var subItem = _itemFactory.CreateSubItemFromName(item);
-                //item.Quality = subItem.UpdateQuality();
+                subItem.UpdateQuality();
+
+                item.Quality = subItem.Quality;
+                item.SellIn = subItem.SellIn;
             });
 
             //for (var i = 0; i < Items.Count; i++)

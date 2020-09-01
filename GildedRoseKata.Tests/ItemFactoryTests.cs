@@ -95,7 +95,7 @@ namespace GildedRoseKata.Tests
             var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
 
             // Test
-            Assert.IsType<NullItem>(actualResult);
+            Assert.IsType<UnknownItem>(actualResult);
         }
     }
 }

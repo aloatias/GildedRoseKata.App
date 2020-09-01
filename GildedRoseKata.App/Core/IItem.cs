@@ -8,6 +8,6 @@
 
         int Quality { get; set; }
 
-        int UpdateQuality();
+        void UpdateQuality();
     }
 }

@@ -15,15 +15,14 @@ namespace GildedRoseKata.App.Models
         {
             if (!Name.Contains("Sulfuras"))
             {
-                return new NullItem(Name, SellIn, Quality);
+                return new UnknownItem(Name, SellIn, Quality);
             }
 
             return this;
         }
 
-        public int UpdateQuality()
+        public void UpdateQuality()
         {
-            return Quality;
         }
     }
 }

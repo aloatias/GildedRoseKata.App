@@ -40,7 +40,8 @@ namespace GildedRoseKata.App
             };
 
             var itemsFactory = new ItemFactory();
-            var app = new GildedRose(items, itemsFactory);
+            var gildedRoseCore = new GildedRose(items, itemsFactory);
+            gildedRoseCore.UpdateQuality();
 
             for (var i = 0; i < 31; i++)
             {
@@ -48,10 +49,9 @@ namespace GildedRoseKata.App
                 Console.WriteLine("name, sellIn, quality");
                 for (var j = 0; j < items.Count; j++)
                 {
-                    System.Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
+                    Console.WriteLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
                 }
                 Console.WriteLine("");
-                app.UpdateQuality();
             }
         }
     }

@@ -16,11 +16,11 @@ namespace GildedRoseKata.App.Core
 
         public void UpdateQuality()
         {
-            Items.ForEach(item =>
-            {
-                var specificItem = _itemFactory.CreateSubItemFromName(item);
-                //specificItem.UpdateQuality();
-            });
+            //Items.ForEach(item =>
+            //{
+            //    var specificItem = _itemFactory.CreateSubItemFromName(item);
+            //    //specificItem.UpdateQuality();
+            //});
 
             for (var i = 0; i < Items.Count; i++)
             {

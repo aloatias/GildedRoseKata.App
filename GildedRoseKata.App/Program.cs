@@ -35,13 +35,13 @@ namespace GildedRoseKata.App
                     SellIn = 5,
                     Quality = 49
                 },
-				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+				
+                // this conjured item does not work properly yet
+				// new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
 
             var itemsFactory = new ItemFactory();
             var gildedRoseCore = new GildedRose(items, itemsFactory);
-            gildedRoseCore.UpdateQuality();
 
             for (var i = 0; i < 31; i++)
             {
@@ -52,6 +52,8 @@ namespace GildedRoseKata.App
                     Console.WriteLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
                 }
                 Console.WriteLine("");
+
+                gildedRoseCore.UpdateQuality();
             }
         }
     }

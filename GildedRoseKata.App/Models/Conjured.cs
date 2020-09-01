@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class Conjured : Item, IItem
+    public class Conjured : Item, IValidItem
     {
         public Conjured(string name, int sellin, int quality)
         {
@@ -15,13 +15,13 @@ namespace GildedRoseKata.App.Models
         {
             if (!Name.Contains("Conjured"))
             {
-                return new NullItem();
+                return new NullItem(Name, SellIn, Quality);
             }
 
             return this;
         }
 
-        public void UpdateQuality()
+        public int UpdateQuality()
         {
             throw new System.NotImplementedException();
         }

@@ -2,16 +2,18 @@
 
 namespace GildedRoseKata.App.Core
 {
-    public class NullItem : Item, IItem
+    public class NullItem : Item, IUnknownItem
     {
-        public IItem Build()
+        public NullItem(string name, int sellin, int quality)
         {
-            throw new System.NotImplementedException();
+            Name = name;
+            SellIn = sellin;
+            Quality = quality;
         }
 
-        public void UpdateQuality()
+        public int UpdateQuality()
         {
-            throw new System.NotImplementedException();
+            return Quality--;
         }
     }
 }

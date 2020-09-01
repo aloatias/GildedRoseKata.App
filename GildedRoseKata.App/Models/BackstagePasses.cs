@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class BackstagePasses : Item, IItem
+    public class BackstagePasses : Item, IValidItem
     {
         public BackstagePasses(string name, int sellin, int quality)
         {
@@ -15,15 +15,37 @@ namespace GildedRoseKata.App.Models
         {
             if (!Name.Contains("Backstage passes"))
             {
-                return new NullItem();
+                return new NullItem(Name, SellIn, Quality);
             }
 
             return this;
         }
 
-        public void UpdateQuality()
+        public int UpdateQuality()
         {
-            throw new System.NotImplementedException();
+            if (Quality < 50)
+            {
+                Quality++;
+            }
+
+            if (SellIn < 11 && Quality < 50)
+            {
+                Quality++;
+            }
+
+            if (SellIn < 6 && Quality < 50)
+            {
+                Quality++;
+            }
+
+            SellIn--;
+
+            if (SellIn < 0)
+            {
+                Quality = 0;
+            }
+
+            return Quality;
         }
     }
 }

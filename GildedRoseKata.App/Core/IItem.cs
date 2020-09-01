@@ -2,8 +2,12 @@
 {
     public interface IItem
     {
-        IItem Build();
+        string Name { get; set; }
 
-        void UpdateQuality();
+        int SellIn { get; set; }
+
+        int Quality { get; set; }
+
+        int UpdateQuality();
     }
 }

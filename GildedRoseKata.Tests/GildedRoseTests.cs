@@ -36,24 +36,23 @@ namespace GildedRoseKata.Tests
             };
 
 			// this conjured item does not work properly yet
-			//new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+			// new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
 
             // Act
-            var app = new GildedRose(Items);
-            app.UpdateQuality();
+            var gildedRoseCore = new GildedRose(Items);
+            gildedRoseCore.UpdateQuality();
 
             var sb = new StringBuilder();
             for (var i = 0; i < 31; i++)
             {
                 sb.AppendLine("-------- day " + i + " --------");
                 sb.AppendLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                for (var j = 0; j < gildedRoseCore.Items.Count; j++)
                 {
-                    sb.AppendLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    sb.AppendLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
                 }
 
                 sb.AppendLine("");
-                app.UpdateQuality();
             }
 
             var actualResult = sb.ToString();

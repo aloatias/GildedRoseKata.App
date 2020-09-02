@@ -18,9 +18,9 @@ namespace GildedRoseKata.App.Core
         {
             IItem createdItem = new UnknownItem(item.Name, item.SellIn, item.Quality);
 
-            for (var i = 0; i < _itemsType.Count; i++)
+            foreach (var itemType in _itemsType)
             {
-                var temporaryItem = (IValidItem)Activator.CreateInstance(_itemsType[i], item.Name, item.SellIn, item.Quality);
+                var temporaryItem = (IValidItem)Activator.CreateInstance(itemType, item.Name, item.SellIn, item.Quality);
                 createdItem = temporaryItem.Build();
 
                 if (createdItem.GetType() != typeof(UnknownItem))

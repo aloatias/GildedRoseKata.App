@@ -10,7 +10,7 @@ namespace GildedRoseKata.App.Configuration
         public static ServiceProvider RegisterServices(this ServiceCollection services, IConfiguration configuration)
         {
             services
-                .AddSingleton<ItemTypesHelper>()
+                .AddSingleton<ItemTypesConfiguration>()
                 .AddSingleton<IItemFactory, ItemFactory>()
                 .AddSingleton(configuration);
 

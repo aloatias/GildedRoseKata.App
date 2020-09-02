@@ -1,9 +1,8 @@
 ﻿using GildedRoseKata.App.Core;
-using System;
 
 namespace GildedRoseKata.App.Models
 {
-    public class AgedBrie : Item, IItem
+    public class AgedBrie : Item, IValidItem
     {
         public AgedBrie(string name, int sellin, int quality)
         {
@@ -16,7 +15,7 @@ namespace GildedRoseKata.App.Models
         {
             if (Name != "Aged Brie")
             {
-                return new NullItem();
+                return new UnknownItem(Name, SellIn, Quality);
             }
 
             return this;
@@ -24,7 +23,17 @@ namespace GildedRoseKata.App.Models
 
         public void UpdateQuality()
         {
-            Console.WriteLine("AgedBrie update quantity");
+            if (Quality < 50)
+            {
+                Quality += 1;
+            }
+
+            SellIn -= 1;
+
+            if (SellIn < 0 && Quality < 50)
+            {
+                Quality += 1;
+            }
         }
     }
 }

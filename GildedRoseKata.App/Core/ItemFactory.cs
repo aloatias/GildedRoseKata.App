@@ -16,14 +16,14 @@ namespace GildedRoseKata.App.Core
 
         public IItem CreateSubItemFromName(Item item)
         {
-            IItem createdItem = new NullItem();
+            IItem createdItem = new UnknownItem(item.Name, item.SellIn, item.Quality);
 
             for (var i = 0; i < _itemsType.Count; i++)
             {
-                var temporaryItem = (IItem)Activator.CreateInstance(_itemsType[i], item.Name, item.SellIn, item.Quality);
+                var temporaryItem = (IValidItem)Activator.CreateInstance(_itemsType[i], item.Name, item.SellIn, item.Quality);
                 createdItem = temporaryItem.Build();
 
-                if (createdItem.GetType() != typeof(NullItem))
+                if (createdItem.GetType() != typeof(UnknownItem))
                 {
                     return createdItem;
                 }

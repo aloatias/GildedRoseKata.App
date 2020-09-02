@@ -2,7 +2,7 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class Sulfuras : Item, IItem
+    public class Sulfuras : Item, IValidItem
     {
         public Sulfuras(string name, int sellin, int quality)
         {
@@ -15,7 +15,7 @@ namespace GildedRoseKata.App.Models
         {
             if (!Name.Contains("Sulfuras"))
             {
-                return new NullItem();
+                return new UnknownItem(Name, SellIn, Quality);
             }
 
             return this;
@@ -23,7 +23,6 @@ namespace GildedRoseKata.App.Models
 
         public void UpdateQuality()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

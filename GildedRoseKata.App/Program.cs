@@ -34,10 +34,9 @@ namespace GildedRoseKata.App
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -2, Quality = 2 },
-                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 10 }
-				
-                // this conjured item does not work properly yet
-				// new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 10 },
+                new Item { Name = "Conjured Mana Cake", SellIn = -1, Quality = 6 },
+                new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
 
             var _gildedRoseCore = new GildedRose(items, _itemTypesHelper);

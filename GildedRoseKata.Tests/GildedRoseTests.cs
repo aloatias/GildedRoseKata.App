@@ -42,11 +42,10 @@ namespace GildedRoseKata.Tests
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -2, Quality = 2 }
+                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -2, Quality = 2 },
+                new Item { Name = "Conjured Mana Cake", SellIn = -1, Quality = 6 },
+                new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
-
-            // this conjured item does not work properly yet
-            // new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
 
             // Act
             var gildedRoseCore = new GildedRose(items, _itemFactory);

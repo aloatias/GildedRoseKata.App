@@ -23,7 +23,10 @@ namespace GildedRoseKata.App.Models
 
         public void UpdateQuality()
         {
-            Quality -= 1;
+            if (Quality > 0)
+            {
+                Quality -= 1;
+            }
         }
     }
 }

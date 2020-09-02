@@ -39,7 +39,7 @@ namespace GildedRoseKata.App
                 new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
 
-            var _gildedRoseCore = new GildedRose(items, _itemTypesHelper);
+            var gildedRoseCore = new GildedRose(items, _itemTypesHelper);
 
             for (var i = 0; i < 31; i++)
             {
@@ -47,11 +47,11 @@ namespace GildedRoseKata.App
                 Console.WriteLine("name, sellIn, quality");
                 for (var j = 0; j < items.Count; j++)
                 {
-                    Console.WriteLine(_gildedRoseCore.Items[j].Name + ", " + _gildedRoseCore.Items[j].SellIn + ", " + _gildedRoseCore.Items[j].Quality);
+                    Console.WriteLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
                 }
                 Console.WriteLine("");
 
-                _gildedRoseCore.UpdateQuality();
+                gildedRoseCore.UpdateQuality();
             }
         }
 

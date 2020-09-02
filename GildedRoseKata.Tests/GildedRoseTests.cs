@@ -207,5 +207,47 @@ namespace GildedRoseKata.Tests
                 Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
             }
         }
+
+        [Fact(DisplayName = "Alvaro Test sub type system characterization tests")]
+        public void AlvaroCharacterizationTest()
+        {
+            // Prepare
+            List<Item> initialItems = new List<Item>
+            {
+                // Kata example
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 49 },
+                new Item { Name = "Alvaro's Test", SellIn = -2, Quality = 2 },
+                new Item { Name = "Alvaro's Test", SellIn = 12, Quality = 50 },
+                new Item { Name = "Alvaro's Test", SellIn = 11, Quality = 10 },
+                new Item { Name = "Alvaro's Test", SellIn = 6, Quality = 10 },
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 1 },
+                new Item { Name = "Alvaro's Test", SellIn = 0, Quality = 50 },
+                new Item { Name = "Alvaro's Test", SellIn = -3, Quality = 0 },
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 0 }
+            };
+
+            var expectedResult = new List<Item>
+            {
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 48 },
+                new Item { Name = "Alvaro's Test", SellIn = -2, Quality = 1 },
+                new Item { Name = "Alvaro's Test", SellIn = 12, Quality = 49 },
+                new Item { Name = "Alvaro's Test", SellIn = 11, Quality = 9 },
+                new Item { Name = "Alvaro's Test", SellIn = 6, Quality = 9 },
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 0 },
+                new Item { Name = "Alvaro's Test", SellIn = 0, Quality = 49 },
+                new Item { Name = "Alvaro's Test", SellIn = -3, Quality = 0 },
+                new Item { Name = "Alvaro's Test", SellIn = 5, Quality = 0 }
+            };
+
+            // Act
+            var gildedRoseCore = new GildedRose(initialItems, _itemFactory);
+            gildedRoseCore.UpdateQuality();
+
+            // Test
+            for (var i = 0; i < expectedResult.Count; i++)
+            {
+                Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
+            }
+        }
     }
 }

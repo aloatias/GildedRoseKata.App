@@ -18,7 +18,7 @@ namespace GildedRoseKata.App.Core
         {
             Items.ForEach(item =>
             {
-                var subItem = _itemFactory.CreateSubItemFromName(item);
+                var subItem = _itemFactory.CreateSubItemFromItem(item);
                 subItem.UpdateQuality();
 
                 item.Quality = subItem.Quality;

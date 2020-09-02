@@ -2,9 +2,9 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class Conjured : Item, IValidItem
+    public class Test : Item, IValidItem
     {
-        public Conjured(string name, int sellin, int quality)
+        public Test(string name, int sellin, int quality)
         {
             Name = name;
             SellIn = sellin;
@@ -13,7 +13,7 @@ namespace GildedRoseKata.App.Models
 
         public IItem Build()
         {
-            if (!Name.Contains("Conjured"))
+            if (Name != "Alvaro's Test")
             {
                 return new UnknownItem(Name, SellIn, Quality);
             }
@@ -23,7 +23,7 @@ namespace GildedRoseKata.App.Models
 
         public void UpdateQuality()
         {
-            Quality -= 2;
+            Quality -= 1;
         }
     }
 }

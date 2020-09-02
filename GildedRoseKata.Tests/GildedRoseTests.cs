@@ -19,9 +19,7 @@ namespace GildedRoseKata.Tests
         public void Foo()
         {
             List<Item> items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-
-            var itemFactory = new ItemFactory();
-            GildedRose app = new GildedRose(items, itemFactory);
+            GildedRose app = new GildedRose(items, _itemFactory);
             app.UpdateQuality();
             Assert.Equal("foo", items[0].Name);
         }
@@ -45,10 +43,9 @@ namespace GildedRoseKata.Tests
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 },
                 new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -2, Quality = 2 },
+                new Item { Name = "Conjured Mana Cake", SellIn = -1, Quality = 6 },
+                new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
-
-            // this conjured item does not work properly yet
-            // new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
 
             // Act
             var gildedRoseCore = new GildedRose(items, _itemFactory);
@@ -175,7 +172,7 @@ namespace GildedRoseKata.Tests
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80 },
 
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 5, Quality = 49 },
-                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -2, Quality = 2 },                   
+                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -2, Quality = 2 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 12, Quality = 50 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 11, Quality = 10 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 6, Quality = 10 },

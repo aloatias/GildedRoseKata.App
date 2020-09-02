@@ -24,7 +24,7 @@ namespace GildedRoseKata.Tests
             var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
+            var actualResult = _itemFactory.CreateSubItemFromItem(initialItem);
 
             // Test
             Assert.IsType<AgedBrie>(actualResult);
@@ -41,7 +41,7 @@ namespace GildedRoseKata.Tests
             var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
+            var actualResult = _itemFactory.CreateSubItemFromItem(initialItem);
 
             // Test
             Assert.IsType<BackstagePasses>(actualResult);
@@ -58,7 +58,7 @@ namespace GildedRoseKata.Tests
             var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
+            var actualResult = _itemFactory.CreateSubItemFromItem(initialItem);
 
             // Test
             Assert.IsType<Conjured>(actualResult);
@@ -75,7 +75,7 @@ namespace GildedRoseKata.Tests
             var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
+            var actualResult = _itemFactory.CreateSubItemFromItem(initialItem);
 
             // Test
             Assert.IsType<Sulfuras>(actualResult);
@@ -92,7 +92,7 @@ namespace GildedRoseKata.Tests
             var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromName(initialItem);
+            var actualResult = _itemFactory.CreateSubItemFromItem(initialItem);
 
             // Test
             Assert.IsType<UnknownItem>(actualResult);

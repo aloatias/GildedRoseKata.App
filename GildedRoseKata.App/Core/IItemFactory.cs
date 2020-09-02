@@ -4,6 +4,6 @@ namespace GildedRoseKata.App.Core
 {
     public interface IItemFactory
     {
-        IItem CreateSubItemFromName(Item item);
+        IItem CreateSubItemFromItem(Item item);
     }
 }

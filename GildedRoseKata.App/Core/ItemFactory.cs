@@ -1,26 +1,24 @@
 ﻿using GildedRoseKata.App.Models;
 using System;
-using System.Collections.Generic;
 
 namespace GildedRoseKata.App.Core
 {
     public class ItemFactory : IItemFactory
     {
-        private readonly List<Type> _itemsType;
-
-        // TODO: Use DI to inject a singleton instance of the list types
-        public ItemFactory()
+        private readonly ItemTypesHelper _itemTypesHelper;
+        
+        public ItemFactory(ItemTypesHelper itemTypesHelper)
         {
-            _itemsType = new List<Type> { typeof(AgedBrie), typeof(BackstagePasses), typeof(Conjured), typeof(Sulfuras) };
+            _itemTypesHelper = itemTypesHelper;
         }
 
-        public IItem CreateSubItemFromName(Item item)
+        public IItem CreateSubItemFromItem(Item item)
         {
             IItem createdItem = new UnknownItem(item.Name, item.SellIn, item.Quality);
 
-            for (var i = 0; i < _itemsType.Count; i++)
+            foreach (var itemType in _itemTypesHelper.ItemTypesList)
             {
-                var temporaryItem = (IValidItem)Activator.CreateInstance(_itemsType[i], item.Name, item.SellIn, item.Quality);
+                var temporaryItem = (IValidItem)Activator.CreateInstance(itemType, item.Name, item.SellIn, item.Quality);
                 createdItem = temporaryItem.Build();
 
                 if (createdItem.GetType() != typeof(UnknownItem))

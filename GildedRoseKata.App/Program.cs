@@ -12,7 +12,7 @@ namespace GildedRoseKata.App
     {
         private static IConfiguration _configuration;
         private static ServiceProvider _serviceProvider;
-        private static IItemFactory _itemTypesHelper;
+        private static IItemFactory _itemFactory;
 
         public static void Main(string[] args)
         {
@@ -39,7 +39,7 @@ namespace GildedRoseKata.App
                 new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
 
-            var gildedRoseCore = new GildedRose(items, _itemTypesHelper);
+            var gildedRoseCore = new GildedRose(items, _itemFactory);
 
             for (var i = 0; i < 31; i++)
             {
@@ -69,7 +69,7 @@ namespace GildedRoseKata.App
 
         private static void LoadItemsType()
         {
-            _itemTypesHelper = _serviceProvider.GetRequiredService<IItemFactory>();
+            _itemFactory = _serviceProvider.GetRequiredService<IItemFactory>();
         }
     }
 }

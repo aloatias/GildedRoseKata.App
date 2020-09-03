@@ -1,5 +1,5 @@
-﻿using GildedRoseKata.App.Core;
-using GildedRoseKata.App.Models;
+﻿using GildedRoseKata.App.Configuration;
+using GildedRoseKata.App.Core;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
@@ -12,9 +12,9 @@ namespace GildedRoseKata.Tests
             return new ItemFactory(CreateItemTypesHelper(CreateConfiguration()));
         }
 
-        private ItemTypesHelper CreateItemTypesHelper(IConfiguration configuration)
+        private ItemTypesConfiguration CreateItemTypesHelper(IConfiguration configuration)
         {
-            return new ItemTypesHelper(configuration);
+            return new ItemTypesConfiguration(configuration);
         }
 
         private IConfiguration CreateConfiguration()

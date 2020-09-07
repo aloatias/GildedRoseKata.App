@@ -1,34 +1,35 @@
 ﻿using GildedRoseKata.App.Configuration;
 using GildedRoseKata.App.Models;
 using System;
+using System.Collections.Generic;
 
 namespace GildedRoseKata.App.Core
 {
     public class ItemFactory : IItemFactory
     {
-        private readonly ItemTypesConfiguration _itemTypesConfiguration;
-        
-        public ItemFactory(ItemTypesConfiguration itemTypesHelper)
+        private readonly List<Type> _itemTypes;
+
+        public ItemFactory(ItemTypesConfiguration itemTypesConfiguration)
         {
-            _itemTypesConfiguration = itemTypesHelper;
+            _itemTypes = itemTypesConfiguration.GetItemTypes();
         }
 
-        public IItem CreateSubItemFromItem(Item item)
+        public IItem CreateSubItemFromItemName(Item item)
         {
-            IItem createdItem = new UnknownItem(item.Name, item.SellIn, item.Quality);
+            IItem subItem = new UnknownItem(item.Name, item.SellIn, item.Quality);
 
-            foreach (var itemType in _itemTypesConfiguration.ItemTypes)
+            foreach (var itemType in _itemTypes)
             {
-                var temporaryItem = (IValidItem)Activator.CreateInstance(itemType, item.Name, item.SellIn, item.Quality);
-                createdItem = temporaryItem.Build();
+                var temporarySubItem = (IValidItem)Activator.CreateInstance(itemType, item.Name, item.SellIn, item.Quality);
+                subItem = temporarySubItem.Build();
 
-                if (createdItem.GetType() != typeof(UnknownItem))
+                if (subItem.GetType() != typeof(UnknownItem))
                 {
-                    return createdItem;
+                    return subItem;
                 }
             }
 
-            return createdItem;
+            return subItem;
         }
     }
 }

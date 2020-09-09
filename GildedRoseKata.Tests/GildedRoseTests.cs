@@ -19,7 +19,8 @@ namespace GildedRoseKata.Tests
         public void Foo()
         {
             List<Item> items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(items, _itemFactory);
+            GildedRose app = new GildedRose(_itemFactory);
+            app.SetItems(items);
             app.UpdateQuality();
             Assert.Equal("foo", items[0].Name);
         }
@@ -48,16 +49,20 @@ namespace GildedRoseKata.Tests
             };
 
             // Act
-            var gildedRoseCore = new GildedRose(items, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(items);
 
             var sb = new StringBuilder();
             for (var i = 0; i < 31; i++)
             {
                 sb.AppendLine("-------- day " + i + " --------");
                 sb.AppendLine("name, sellIn, quality");
-                for (var j = 0; j < gildedRoseCore.Items.Count; j++)
+
+                var coreItems = gildedRoseCore.GetItems();
+
+                for (var j = 0; j < coreItems.Count; j++)
                 {
-                    sb.AppendLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
+                    sb.AppendLine(coreItems[j].Name + ", " + coreItems[j].SellIn + ", " + coreItems[j].Quality);
                 }
 
                 sb.AppendLine("");
@@ -104,13 +109,16 @@ namespace GildedRoseKata.Tests
             };
 
             // Act
-            var gildedRoseCore = new GildedRose(initialItems, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(initialItems);
             gildedRoseCore.UpdateQuality();
 
             // Test
+            var coreItems = gildedRoseCore.GetItems();
+
             for (var i = 0; i < expectedResult.Count; i++)
             {
-                Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
+                Assert.Equal(expectedResult[i].Quality, coreItems[i].Quality);
             }
         }
 
@@ -151,13 +159,16 @@ namespace GildedRoseKata.Tests
             };
 
             // Act
-            var gildedRoseCore = new GildedRose(initialItems, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(initialItems);
             gildedRoseCore.UpdateQuality();
 
             // Test
+            var coreItems = gildedRoseCore.GetItems();
+
             for (var i = 0; i < expectedResult.Count; i++)
             {
-                Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
+                Assert.Equal(expectedResult[i].Quality, coreItems[i].Quality);
             }
         }
 
@@ -198,13 +209,16 @@ namespace GildedRoseKata.Tests
             };
 
             // Act
-            var gildedRoseCore = new GildedRose(initialItems, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(initialItems);
             gildedRoseCore.UpdateQuality();
 
             // Test
+            var coreItems = gildedRoseCore.GetItems();
+
             for (var i = 0; i < expectedResult.Count; i++)
             {
-                Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
+                Assert.Equal(expectedResult[i].Quality, coreItems[i].Quality);
             }
         }
 
@@ -240,13 +254,16 @@ namespace GildedRoseKata.Tests
             };
 
             // Act
-            var gildedRoseCore = new GildedRose(initialItems, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(initialItems);
             gildedRoseCore.UpdateQuality();
 
             // Test
+            var coreItems = gildedRoseCore.GetItems();
+
             for (var i = 0; i < expectedResult.Count; i++)
             {
-                Assert.Equal(expectedResult[i].Quality, gildedRoseCore.Items[i].Quality);
+                Assert.Equal(expectedResult[i].Quality, coreItems[i].Quality);
             }
         }
     }

@@ -39,15 +39,19 @@ namespace GildedRoseKata.App
                 new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 6 }
             };
 
-            var gildedRoseCore = new GildedRose(items, _itemFactory);
+            var gildedRoseCore = new GildedRose(_itemFactory);
+            gildedRoseCore.SetItems(items);
 
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");
                 Console.WriteLine("name, sellIn, quality");
+
+                var coreItems = gildedRoseCore.GetItems();
+
                 for (var j = 0; j < items.Count; j++)
                 {
-                    Console.WriteLine(gildedRoseCore.Items[j].Name + ", " + gildedRoseCore.Items[j].SellIn + ", " + gildedRoseCore.Items[j].Quality);
+                    Console.WriteLine(coreItems[j].Name + ", " + coreItems[j].SellIn + ", " + coreItems[j].Quality);
                 }
                 Console.WriteLine("");
 

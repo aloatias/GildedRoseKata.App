@@ -8,29 +8,32 @@ namespace GildedRoseKata.App.Configuration
 {
     public class ItemTypesConfiguration
     {
-        private readonly IConfiguration _configuration;
         private readonly string _configurationSectionName = "itemTypes";
-        private readonly List<string> _itemTypesConfiguration;
+        private readonly List<string> _itemTypesInConfiguration;
         private readonly string _itemTypesModelsNamespace = "GildedRoseKata.App.Models.";
 
-        public List<Type> ItemTypes { get; private set; } = new List<Type>();
+        private readonly List<Type> _itemTypes = new List<Type>();
 
         public ItemTypesConfiguration(IConfiguration configuration)
         {
-            _configuration = configuration;
-            _itemTypesConfiguration = _configuration.GetSection(_configurationSectionName)?.GetChildren()?.Select(itc => itc.Value)?.ToList();
+            _itemTypesInConfiguration = configuration.GetSection(_configurationSectionName)?.GetChildren()?.Select(itc => itc.Value)?.ToList();
             SetItemTypes();
         }
 
-        public void SetItemTypes()
+        public List<Type> GetItemTypes()
         {
-            if (!ItemTypes.Any())
+            return _itemTypes;
+        }
+
+        private void SetItemTypes()
+        {
+            if (!_itemTypes.Any())
             {
-                foreach (var type in _itemTypesConfiguration)
+                foreach (var type in _itemTypesInConfiguration)
                 {
                     var classPath = $"{ _itemTypesModelsNamespace }{ type }";
                     var currentObject = (IValidItem)Activator.CreateInstance(Type.GetType(classPath), type, 0, 0);
-                    ItemTypes.Add(currentObject.GetType());
+                    _itemTypes.Add(currentObject.GetType());
                 }
             }
         }

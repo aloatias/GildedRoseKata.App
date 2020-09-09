@@ -5,20 +5,29 @@ namespace GildedRoseKata.App.Core
 {
     public class GildedRose
     {
-        public readonly List<Item> Items;
+        private List<Item> _items;
         private readonly IItemFactory _itemFactory;
 
-        public GildedRose(List<Item> items, IItemFactory itemFactory)
+        public GildedRose(IItemFactory itemFactory)
         {
-            Items = items;
             _itemFactory = itemFactory;
+        }
+
+        public List<Item> GetItems()
+        {
+            return _items;
+        }
+
+        public void SetItems(List<Item> items)
+        {
+            _items = items;
         }
 
         public void UpdateQuality()
         {
-            Items.ForEach(item =>
+            _items.ForEach(item =>
             {
-                var subItem = _itemFactory.CreateSubItemFromItem(item);
+                var subItem = _itemFactory.CreateSubItemFromItemName(item);
                 subItem.UpdateQuality();
 
                 item.Quality = subItem.Quality;

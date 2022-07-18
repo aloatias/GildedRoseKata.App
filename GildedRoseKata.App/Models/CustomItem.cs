@@ -2,23 +2,16 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class Conjured : ItemBase, IItem
+    public class CustomItem : ItemBase, IItem
     {
-        public Conjured()
+        public CustomItem()
         {
-            Name = "Conjured";
+            Name = "Alvaro's Test";
         }
 
         public void UpdateQuality()
         {
             if (Quality > 0)
-            {
-                Quality -= 1;
-            }
-
-            Sellin -= 1;
-
-            if (Sellin < 0 && Quality > 0)
             {
                 Quality -= 1;
             }

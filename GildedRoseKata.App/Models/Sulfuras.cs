@@ -2,23 +2,11 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class Sulfuras : Item, IValidItem
+    public class Sulfuras : ItemBase, IItem
     {
-        public Sulfuras(string name, int sellin, int quality)
+        public Sulfuras()
         {
-            Name = name;
-            SellIn = sellin;
-            Quality = quality;
-        }
-
-        public IItem Build()
-        {
-            if (!Name.Contains("Sulfuras"))
-            {
-                return new UnknownItem(Name, SellIn, Quality);
-            }
-
-            return this;
+            Name = "Sulfuras";
         }
 
         public void UpdateQuality()

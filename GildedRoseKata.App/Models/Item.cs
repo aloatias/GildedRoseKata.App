@@ -1,9 +1,9 @@
 ﻿namespace GildedRoseKata.App.Models
 {
-    public class Item
+    public class ItemBase
     {
         public string Name { get; set; }
-        public int SellIn { get; set; }
+        public int Sellin { get; set; }
         public int Quality { get; set; }
     }
 }

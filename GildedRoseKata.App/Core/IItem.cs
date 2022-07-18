@@ -4,7 +4,7 @@
     {
         string Name { get; set; }
 
-        int SellIn { get; set; }
+        int Sellin { get; set; }
 
         int Quality { get; set; }
 

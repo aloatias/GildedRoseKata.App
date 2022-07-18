@@ -1,18 +1,23 @@
 ﻿using GildedRoseKata.App.Core;
 using GildedRoseKata.App.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
 
 namespace GildedRoseKata.App.Configuration
 {
-    public static class DependencyRegistration
+    public static class DependencyRegistrationExtensions
     {
-        public static ServiceProvider RegisterServices(this ServiceCollection services, IConfiguration configuration)
+        public static ServiceProvider RegisterServices(this ServiceCollection services)
         {
             services
-                .AddSingleton<ItemTypesConfiguration>()
+                .AddTransient<IItem, AgedBrie>()
+                .AddTransient<IItem, BackstagePasses>()
+                .AddTransient<IItem, Conjured>()
+                .AddTransient<IItem, Sulfuras>()
+                .AddSingleton<Func<IEnumerable<IItem>>>(x => () => x.GetService<IEnumerable<IItem>>())
                 .AddSingleton<IItemFactory, ItemFactory>()
-                .AddSingleton(configuration);
+                .AddSingleton<GildedRose>();
 
             return services.BuildServiceProvider();
         }

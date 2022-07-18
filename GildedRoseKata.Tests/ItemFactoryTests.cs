@@ -4,7 +4,7 @@ using Xunit;
 
 namespace GildedRoseKata.Tests
 {
-    public class ItemFactoryTests : TestFactory
+    public class ItemFactoryTests : TestBase
     {
         private readonly IItemFactory _itemFactory;
 
@@ -21,10 +21,10 @@ namespace GildedRoseKata.Tests
             var itemQuality = 1;
             var itemSellin = 1;
 
-            var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
+            var initialItem = new ItemBase { Name = itemName, Quality = itemQuality, Sellin = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromItemName(initialItem);
+            var actualResult = _itemFactory.Create(initialItem.Name, initialItem.Quality, initialItem.Sellin);
 
             // Test
             Assert.IsType<AgedBrie>(actualResult);
@@ -38,10 +38,10 @@ namespace GildedRoseKata.Tests
             var itemQuality = 1;
             var itemSellin = 1;
 
-            var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
+            var initialItem = new ItemBase { Name = itemName, Quality = itemQuality, Sellin = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromItemName(initialItem);
+            var actualResult = _itemFactory.Create(initialItem.Name, initialItem.Quality, initialItem.Sellin);
 
             // Test
             Assert.IsType<BackstagePasses>(actualResult);
@@ -55,10 +55,10 @@ namespace GildedRoseKata.Tests
             var itemQuality = 1;
             var itemSellin = 1;
 
-            var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
+            var initialItem = new ItemBase { Name = itemName, Quality = itemQuality, Sellin = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromItemName(initialItem);
+            var actualResult = _itemFactory.Create(initialItem.Name, initialItem.Quality, initialItem.Sellin);
 
             // Test
             Assert.IsType<Conjured>(actualResult);
@@ -72,10 +72,10 @@ namespace GildedRoseKata.Tests
             var itemQuality = 1;
             var itemSellin = 1;
 
-            var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
+            var initialItem = new ItemBase { Name = itemName, Quality = itemQuality, Sellin = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromItemName(initialItem);
+            var actualResult = _itemFactory.Create(initialItem.Name, initialItem.Quality, initialItem.Sellin);
 
             // Test
             Assert.IsType<Sulfuras>(actualResult);
@@ -89,10 +89,10 @@ namespace GildedRoseKata.Tests
             var itemQuality = 1;
             var itemSellin = 1;
 
-            var initialItem = new Item { Name = itemName, Quality = itemQuality, SellIn = itemSellin };
+            var initialItem = new ItemBase { Name = itemName, Quality = itemQuality, Sellin = itemSellin };
 
             // Act
-            var actualResult = _itemFactory.CreateSubItemFromItemName(initialItem);
+            var actualResult = _itemFactory.Create(initialItem.Name, initialItem.Quality, initialItem.Sellin);
 
             // Test
             Assert.IsType<UnknownItem>(actualResult);

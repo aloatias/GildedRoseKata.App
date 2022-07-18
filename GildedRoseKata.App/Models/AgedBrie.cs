@@ -2,23 +2,11 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class AgedBrie : Item, IValidItem
+    public class AgedBrie : ItemBase, IItem
     {
-        public AgedBrie(string name, int sellin, int quality)
+        public AgedBrie()
         {
-            Name = name;
-            SellIn = sellin;
-            Quality = quality;
-        }
-
-        public IItem Build()
-        {
-            if (Name != "Aged Brie")
-            {
-                return new UnknownItem(Name, SellIn, Quality);
-            }
-
-            return this;
+            Name = "Aged Brie";
         }
 
         public void UpdateQuality()
@@ -28,9 +16,9 @@ namespace GildedRoseKata.App.Models
                 Quality += 1;
             }
 
-            SellIn -= 1;
+            Sellin -= 1;
 
-            if (SellIn < 0 && Quality < 50)
+            if (Sellin < 0 && Quality < 50)
             {
                 Quality += 1;
             }

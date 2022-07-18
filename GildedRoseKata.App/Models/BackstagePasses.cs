@@ -2,23 +2,11 @@
 
 namespace GildedRoseKata.App.Models
 {
-    public class BackstagePasses : Item, IValidItem
+    public class BackstagePasses : ItemBase, IItem
     {
-        public BackstagePasses(string name, int sellin, int quality)
+        public BackstagePasses()
         {
-            Name = name;
-            SellIn = sellin;
-            Quality = quality;
-        }
-
-        public IItem Build()
-        {
-            if (!Name.Contains("Backstage passes"))
-            {
-                return new UnknownItem(Name, SellIn, Quality);
-            }
-
-            return this;
+            Name = "Backstage passes";
         }
 
         public void UpdateQuality()
@@ -28,19 +16,19 @@ namespace GildedRoseKata.App.Models
                 Quality += 1;
             }
 
-            if (SellIn < 11 && Quality < 50)
+            if (Sellin < 11 && Quality < 50)
             {
                 Quality += 1;
             }
 
-            if (SellIn < 6 && Quality < 50)
+            if (Sellin < 6 && Quality < 50)
             {
                 Quality += 1;
             }
 
-            SellIn -= 1;
+            Sellin -= 1;
 
-            if (SellIn < 0)
+            if (Sellin < 0)
             {
                 Quality = 0;
             }

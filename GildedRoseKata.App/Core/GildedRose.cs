@@ -5,7 +5,7 @@ namespace GildedRoseKata.App.Core
 {
     public class GildedRose
     {
-        private List<Item> _items;
+        private List<ItemBase> _items;
         private readonly IItemFactory _itemFactory;
 
         public GildedRose(IItemFactory itemFactory)
@@ -13,12 +13,12 @@ namespace GildedRoseKata.App.Core
             _itemFactory = itemFactory;
         }
 
-        public List<Item> GetItems()
+        public List<ItemBase> GetItems()
         {
             return _items;
         }
 
-        public void SetItems(List<Item> items)
+        public void SetItems(List<ItemBase> items)
         {
             _items = items;
         }
@@ -27,11 +27,11 @@ namespace GildedRoseKata.App.Core
         {
             _items.ForEach(item =>
             {
-                var subItem = _itemFactory.CreateSubItemFromItemName(item);
+                var subItem = _itemFactory.Create(item.Name, item.Quality, item.Sellin);
                 subItem.UpdateQuality();
 
                 item.Quality = subItem.Quality;
-                item.SellIn = subItem.SellIn;
+                item.Sellin = subItem.Sellin;
             });
         }
     }

@@ -1,9 +1,7 @@
-﻿using GildedRoseKata.App.Models;
-
-namespace GildedRoseKata.App.Core
+﻿namespace GildedRoseKata.App.Core
 {
     public interface IItemFactory
     {
-        IItem CreateSubItemFromItemName(Item item);
+        IItem Create(string name, int quality, int sellin);
     }
 }

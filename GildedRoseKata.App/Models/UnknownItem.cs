@@ -2,15 +2,8 @@
 
 namespace GildedRoseKata.App.Core
 {
-    public class UnknownItem : Item, IUnknownItem
+    public class UnknownItem : ItemBase, IItem
     {
-        public UnknownItem(string name, int sellin, int quality)
-        {
-            Name = name;
-            SellIn = sellin;
-            Quality = quality;
-        }
-
         public void UpdateQuality()
         {
             if (Quality > 0)
@@ -18,9 +11,9 @@ namespace GildedRoseKata.App.Core
                 Quality -= 1;
             }
 
-            SellIn -= 1;
+            Sellin -= 1;
 
-            if (SellIn < 0 && Quality > 0)
+            if (Sellin < 0 && Quality > 0)
             {
                 Quality -= 1;
             }

@@ -11,6 +11,7 @@ namespace GildedRoseKata.App.Models
 
         public void UpdateQuality()
         {
+            // being a legendary item, never has to be sold or decreases in Quality
         }
     }
 }

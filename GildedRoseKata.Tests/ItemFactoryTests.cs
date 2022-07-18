@@ -81,7 +81,7 @@ namespace GildedRoseKata.Tests
             Assert.IsType<Sulfuras>(actualResult);
         }
 
-        [Fact(DisplayName = "Should create a NullItem sub item type")]
+        [Fact(DisplayName = "Should create an unknown sub item type")]
         public void ShouldCreateANullItem()
         {
             // Prepare

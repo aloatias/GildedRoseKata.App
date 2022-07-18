@@ -34,15 +34,15 @@ namespace GildedRoseKata.App
                 new ItemBase { Name = "Conjured Mana Cake", Sellin = 2, Quality = 6 }
             };
 
-            var gildedRoseCore = ResolveGildedRose();
-            gildedRoseCore.SetItems(items);
+            var gildedRose = ResolveGildedRose();
+            gildedRose.SetItems(items);
 
             for (var i = 0; i < 31; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");
                 Console.WriteLine("name, sellIn, quality");
 
-                var coreItemBases = gildedRoseCore.GetItems();
+                var coreItemBases = gildedRose.GetItems();
 
                 for (var j = 0; j < items.Count; j++)
                 {
@@ -50,7 +50,7 @@ namespace GildedRoseKata.App
                 }
                 Console.WriteLine("");
 
-                gildedRoseCore.UpdateQuality();
+                gildedRose.UpdateQuality();
             }
         }
 
@@ -61,7 +61,7 @@ namespace GildedRoseKata.App
 
         private static void InjectDependencies()
         {
-            _serviceProvider = DependencyRegistrationExtensions.RegisterServices(new ServiceCollection());
+            _serviceProvider = new ServiceCollection().RegisterServices();
         }
     }
 }

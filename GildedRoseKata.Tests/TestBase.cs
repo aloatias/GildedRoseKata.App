@@ -22,7 +22,8 @@ namespace GildedRoseKata.Tests
                 new BackstagePasses(),
                 new Conjured(),
                 new Sulfuras(),
-                new CustomItem()
+                new CustomItem(),
+                new UnknownItem()
             });
         }
     }

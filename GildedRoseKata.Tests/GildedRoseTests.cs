@@ -43,6 +43,7 @@ namespace GildedRoseKata.Tests
                 new ItemBase { Name = "Backstage passes to a TAFKAL80ETC concert", Sellin = 10, Quality = 49 },
                 new ItemBase { Name = "Backstage passes to a TAFKAL80ETC concert", Sellin = 5, Quality = 49 },
                 new ItemBase { Name = "Backstage passes to a TAFKAL80ETC concert", Sellin = -2, Quality = 2 },
+                new ItemBase { Name = "Alvaro's Test", Sellin = 5, Quality = 10 },
                 new ItemBase { Name = "Conjured Mana Cake", Sellin = -1, Quality = 6 },
                 new ItemBase { Name = "Conjured Mana Cake", Sellin = 2, Quality = 6 }
             };

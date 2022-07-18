@@ -4,6 +4,11 @@ namespace GildedRoseKata.App.Core
 {
     public class UnknownItem : ItemBase, IItem
     {
+        public UnknownItem()
+        {
+            Name = nameof(UnknownItem);
+        }
+
         public void UpdateQuality()
         {
             if (Quality > 0)
